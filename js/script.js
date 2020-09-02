@@ -21,9 +21,10 @@ $(document).ready(function() {
                 "lingua":risposta.results[i].original_language,
                 "voto":risposta.results[i].vote_average,
               };
+              var html = template(context);
+              $(".cds-container").append(html);
           }
-          var html = template(context);
-          $(".cds-container").append(html);
+
         },
         'error': function () {
           alert("E' avvenuto un errore. ");
