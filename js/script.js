@@ -22,7 +22,6 @@ $(document).ready(function() {
                 "voto":risposta.results[i].vote_average,
               };
           }
-
           var html = template(context);
           $(".cds-container").append(html);
         },
