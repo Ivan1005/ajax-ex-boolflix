@@ -3,6 +3,14 @@ $(document).ready(function() {
     var valore = $("#in").val();
     film(valore);
   })
+  $(document).keydown(function(event){
+
+       if (event.keyCode == 13 || event.which == 13) {
+         var valore = $("#in").val();
+           film(valore);
+       }
+
+   })
 });
 // FUNZIONE CHIAMATA AJAX
 function film (data){
