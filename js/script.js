@@ -4,8 +4,7 @@ $(document).ready(function() {
     film(valore);
   })
 });
-
-
+// FUNZIONE CHIAMATA AJAX
 function film (data){
   $.ajax(
     {
@@ -16,7 +15,6 @@ function film (data){
                   query: data,
                   language: "it-IT",
       },
-
       'success': function (risposta) {
           if (risposta.total_results >= 1 ){
             print(risposta.results);
@@ -32,14 +30,12 @@ function film (data){
       }
     }
   );
-
 }
-
+// FUNZIONE STAMPA A SCHERM
 function print (data) {
   $(".cds-container").empty();
   var source = $('#entry-template').html();
   var template = Handlebars.compile(source);
-
     for(var i=0; i<data.length; i++){
         var context= {
           "titolo": data[i].title,
