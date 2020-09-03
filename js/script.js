@@ -29,7 +29,7 @@ $(document).ready(function() {
           }else {
             $(".cds-container").html("film non è presente");
           }
-
+          $("#in").val("");
         },
         'error': function () {
           alert("E' avvenuto un errore ");
