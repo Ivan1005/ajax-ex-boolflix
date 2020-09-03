@@ -32,7 +32,7 @@ $(document).ready(function() {
           $("#in").val("");
         },
         'error': function () {
-          alert("E' avvenuto un errore ");
+          alert("devi inserire il titolo");
         }
       }
     );
