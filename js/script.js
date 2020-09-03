@@ -18,24 +18,7 @@ function film (data){
       },
 
       'success': function (risposta) {
-        $(".cds-container").empty();
-        var source = $('#entry-template').html();
-        var template = Handlebars.compile(source);
-        if (risposta.total_results >= 1 ){
-          for(var i=0; i<risposta.results.length; i++){
-              var context= {
-                "titolo": risposta.results[i].title,
-                "titoloOriginale":risposta.results[i].original_title,
-                "lingua":risposta.results[i].original_language,
-                "voto":risposta.results[i].vote_average,
-              };
-                var html = template(context);
-                $(".cds-container").append(html);
-          }
-        }else {
-          $(".cds-container").html("film non è presente");
-        }
-        $("#in").val("");
+          print(risposta);
       },
       'error': function () {
         alert("devi inserire il titolo");
@@ -43,4 +26,25 @@ function film (data){
     }
   );
 
+}
+
+function print (data) {
+  $(".cds-container").empty();
+  var source = $('#entry-template').html();
+  var template = Handlebars.compile(source);
+  if (data.total_results >= 1 ){
+    for(var i=0; i<data.results.length; i++){
+        var context= {
+          "titolo": data.results[i].title,
+          "titoloOriginale":data.results[i].original_title,
+          "lingua":data.results[i].original_language,
+          "voto":data.results[i].vote_average,
+        };
+          var html = template(context);
+          $(".cds-container").append(html);
+    }
+  }else {
+    $(".cds-container").html("film non è presente");
+  }
+  $("#in").val("");
 }
