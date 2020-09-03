@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw==" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css\style.css">
   <title>Document</title>
 </head>
 <body>
+
   <input id="in" type="text" name="" value="" placeholder="inserisci il titolo del film">
   <button id="but" type="button" name="button">search</button>
   <div class="cds-container">
@@ -19,7 +21,7 @@
         <div class="entry" >
           <h2> TITOLO FILM: {{titolo}}</h2>
           <h3> TITOLO ORIGINALE: {{titoloOriginale}}</h3>
-          <h4> LINGUA: {{lingua}}  VOTO: {{voto}}</h4>
+          <h4> LINGUA: {{{lingua}}}  VOTO: {{{voto}}}</h4>
           <h1>{{nonPresente}}</h1>
         </div>
   </script>
