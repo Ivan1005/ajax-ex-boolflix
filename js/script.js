@@ -18,7 +18,14 @@ function film (data){
       },
 
       'success': function (risposta) {
-          print(risposta);
+          if (risposta.total_results >= 1 ){
+            print(risposta.results);
+          }else {
+            $(".cds-container").empty();
+            var source = $('#entry-template').html();
+            var template = Handlebars.compile(source);
+            $(".cds-container").html("film non è presente");
+          }
       },
       'error': function () {
         alert("devi inserire il titolo");
@@ -32,19 +39,16 @@ function print (data) {
   $(".cds-container").empty();
   var source = $('#entry-template').html();
   var template = Handlebars.compile(source);
-  if (data.total_results >= 1 ){
-    for(var i=0; i<data.results.length; i++){
+
+    for(var i=0; i<data.length; i++){
         var context= {
-          "titolo": data.results[i].title,
-          "titoloOriginale":data.results[i].original_title,
-          "lingua":data.results[i].original_language,
-          "voto":data.results[i].vote_average,
+          "titolo": data[i].title,
+          "titoloOriginale":data[i].original_title,
+          "lingua":data[i].original_language,
+          "voto":data[i].vote_average,
         };
           var html = template(context);
           $(".cds-container").append(html);
     }
-  }else {
-    $(".cds-container").html("film non è presente");
-  }
   $("#in").val("");
 }
