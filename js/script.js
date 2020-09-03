@@ -2,6 +2,7 @@ $(document).ready(function() {
   $("#but").click(function(){
     var valore = $("#in").val();
     film(valore);
+    serieTv(valore);
   })
   $(document).keydown(function(event){
 
@@ -10,7 +11,6 @@ $(document).ready(function() {
            film(valore);
            serieTv(valore);
        }
-
    })
 });
 // FUNZIONE CHIAMATA AJAX
