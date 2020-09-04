@@ -26,7 +26,7 @@ function film (data){
       },
       'success': function (risposta) {
           if (risposta.total_results >= 1 ){
-            print(risposta.results);
+            print(risposta.results, "film");
           }else {
             var source = $('#entry-template').html();
             var template = Handlebars.compile(source);
@@ -53,7 +53,7 @@ function serieTv (data){
       },
       'success': function (risposta) {
           if (risposta.total_results >= 1 ){
-            printSerie(risposta.results);
+            print(risposta.results, "tv");
           }else {
             var source = $('#entry-template').html();
             var template = Handlebars.compile(source);
@@ -67,31 +67,23 @@ function serieTv (data){
   );
 }
 // FUNZIONE STAMPA A SCHERM
-function print (data) {
+function print (data, type) {
   $(".cds-container").empty();
   var source = $('#entry-template').html();
   var template = Handlebars.compile(source);
+
     for(var i=0; i<data.length; i++){
+      if (type == "film"){
+        var title =data[i].title;
+        var origine = data[i].original_title;
+      }else if ( type == "tv"){
+        var title =data[i].name;
+        var origine = data[i].original_name;
+      }
         var context= {
-          "titolo": data[i].title,
-          "titoloOriginale":data[i].original_title,
-          "lingua":flag(data[i].original_language),
-          "voto":stars(data[i].vote_average) ,
-        };
-          var html = template(context);
-          $(".cds-container").append(html);
-    }
-  $("#in").val("");
-}
-// FUNZIONE STAMPA SERIE
-function printSerie (data) {
-  $(".cds-container").empty();
-  var source = $('#entry-template').html();
-  var template = Handlebars.compile(source);
-    for(var i=0; i<data.length; i++){
-        var context= {
-          "titolo": data[i].name ,
-          "titoloOriginale":data[i].original_name ,
+          "tipo": type,
+          "titolo": title,
+          "titoloOriginale":origine,
           "lingua":flag(data[i].original_language),
           "voto":stars(data[i].vote_average) ,
         };
@@ -126,7 +118,7 @@ function flag(stringa) {
   // solo ita e en
   var lingue = ["en", "it"];
   if (lingue.includes(stringa)) {
-        return '<img src="img/' + stringa + '.png">';
+        return '<img src="img/' + stringa + '.png" class="star">';
     }  else {
         return stringa;
     }
