@@ -1,23 +1,27 @@
 $(document).ready(function() {
   $("#but").click(function(){
     var valore = $("#in").val();
-    film(valore);
-    serieTv(valore);
+    var url1 = "https://api.themoviedb.org/3/search/movie";
+    var url2 = "https://api.themoviedb.org/3/search/tv";
+    ricerca(valore, url1,"film");
+    ricerca(valore,url2,"tv");
   })
   $(document).keydown(function(event){
 
        if (event.keyCode == 13 || event.which == 13) {
          var valore = $("#in").val();
-           film(valore);
-           serieTv(valore);
+         var url1 = "https://api.themoviedb.org/3/search/movie";
+         var url2 = "https://api.themoviedb.org/3/search/tv";
+         ricerca(valore, url1,"film");
+         ricerca(valore,url2,"tv");
        }
    })
 });
 // FUNZIONE CHIAMATA AJAX
-function film (data){
+function ricerca (data , url , type){
   $.ajax(
     {
-      'url': "https://api.themoviedb.org/3/search/movie",
+      'url': url,
       'method': "GET",
       "data" : {
                   api_key: "0ddb3a09479589fbbf168ce8b9819f87",
@@ -26,7 +30,7 @@ function film (data){
       },
       'success': function (risposta) {
           if (risposta.total_results >= 1 ){
-            print(risposta.results, "film");
+            print(risposta.results, type);
           }else {
             var source = $('#entry-template').html();
             var template = Handlebars.compile(source);
@@ -40,32 +44,7 @@ function film (data){
   );
 }
 
-// FUNZIONE SERIE TV
-function serieTv (data){
-  $.ajax(
-    {
-      'url': "https://api.themoviedb.org/3/search/tv",
-      'method': "GET",
-      "data" : {
-                  api_key: "0ddb3a09479589fbbf168ce8b9819f87",
-                  query: data,
-                  language: "it-IT",
-      },
-      'success': function (risposta) {
-          if (risposta.total_results >= 1 ){
-            print(risposta.results, "tv");
-          }else {
-            var source = $('#entry-template').html();
-            var template = Handlebars.compile(source);
-            $(".cds-container").html("non è presente il libreria");
-          }
-      },
-      'error': function () {
-        alert("devi inserire il titolo");
-      }
-    }
-  );
-}
+
 // FUNZIONE STAMPA A SCHERM
 function print (data, type) {
   $(".cds-container").empty();
