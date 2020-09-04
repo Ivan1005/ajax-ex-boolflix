@@ -28,7 +28,6 @@ function film (data){
           if (risposta.total_results >= 1 ){
             print(risposta.results);
           }else {
-            $(".cds-container").empty();
             var source = $('#entry-template').html();
             var template = Handlebars.compile(source);
             $(".cds-container").html("non è presente il libreria");
@@ -56,7 +55,6 @@ function serieTv (data){
           if (risposta.total_results >= 1 ){
             printSerie(risposta.results);
           }else {
-            $(".cds-container").empty();
             var source = $('#entry-template').html();
             var template = Handlebars.compile(source);
             $(".cds-container").html("non è presente il libreria");
@@ -92,8 +90,8 @@ function printSerie (data) {
   var template = Handlebars.compile(source);
     for(var i=0; i<data.length; i++){
         var context= {
-          "titolo": data[i].name,
-          "titoloOriginale":data[i].original_name,
+          "titolo": data[i].name ,
+          "titoloOriginale":data[i].original_name ,
           "lingua":flag(data[i].original_language),
           "voto":stars(data[i].vote_average) ,
         };
