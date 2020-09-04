@@ -103,12 +103,18 @@ function printSerie (data) {
 // FUNZIONE STARS
 function stars (num){
   // 1 divido num % 2
-  var number = Math.ceil(num / 2);
+  var resto = num % 2 ;
+
+  var number = Math.floor(num / 2);
   var stars = "";
   for ( var i = 0 ; i < 5 ; i++){
           if (i < number ){
             stars += '<i class="fas fa-star"></i>';
-          }else {
+          }else if ( resto != 0 ){
+            stars += '<i class="fas fa-star-half-alt"></i>';
+            resto = 0;
+          }
+          else {
             stars += '<i class="far fa-star"></i>';
           }
   }
