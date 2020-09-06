@@ -6,6 +6,7 @@ $(document).ready(function() {
     var url2 = "https://api.themoviedb.org/3/search/tv";
     ricerca(valore, url1,"film");
     ricerca(valore,url2,"tv");
+    $(".cds-container").empty();
   })
   $(document).keydown(function(event){
 
@@ -15,6 +16,7 @@ $(document).ready(function() {
          var url2 = "https://api.themoviedb.org/3/search/tv";
          ricerca(valore, url1,"film");
          ricerca(valore,url2,"tv");
+         $(".cds-container").empty();
        }
    })
 });
@@ -35,7 +37,7 @@ function ricerca (data , url , type){
           }else {
             var source = $('#entry-template').html();
             var template = Handlebars.compile(source);
-            $(".cds-container").html("non è presente il libreria");
+              $(".cds-container").html("NON PRESENTE IL LIBRERIA!");
           }
       },
       'error': function () {
@@ -47,7 +49,6 @@ function ricerca (data , url , type){
 
 // FUNZIONE STAMPA A SCHERM
 function print (data, type) {
-  $(".cds-container").empty();
   var source = $('#entry-template').html();
   var template = Handlebars.compile(source);
     for(var i=0; i<data.length; i++){
@@ -58,7 +59,10 @@ function print (data, type) {
         var title =data[i].name;
         var origine = data[i].original_name;
       }
+      var over = data[i].overview;
+      var result = over.substring(0,80);
         var context= {
+          "overview" : result + "...",
           "poster":checkke(poster (data[i].poster_path)),
           "tipo": type,
           "titolo": title,

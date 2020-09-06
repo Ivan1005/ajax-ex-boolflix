@@ -39,6 +39,7 @@ header .left {
 }
 
 main {
+  min-height: 1000px;
   background-color: darkred;
   width: 100%;
   overflow-y: auto;
@@ -49,7 +50,7 @@ main {
   flex-wrap: wrap;
   justify-content: space-around;
   width: 80%;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 
 .cds-container h1 {
@@ -66,7 +67,8 @@ main {
   display: block;
 }
 .entry:hover  .image{
-  opacity: 0.2;
+  opacity: 0.1;
+  transition: .5s ease;
 }
 .entry .hover {
   display: none;
@@ -76,6 +78,13 @@ main {
   transform: translate(-50%, -50%);
 }
 
+
 .hover ul li {
   font-size: 18px;
+}
+
+
+.hover h1 {
+  font-size: 50px;
+  padding: 300px;
 }
