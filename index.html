@@ -19,11 +19,14 @@
   </div>
   <script id="entry-template" type="text/x-handlebars-template">
         <div class="entry" >
-          <h2> TITOLO : {{titolo}} {{titoloFilm}}</h2>
-          <h3>tipo: {{tipo}}</h3>
-          <h3> TITOLO ORIGINALE: {{titoloOriginale}} {{titoloOriginaleFilm}}</h3>
-          <h4> LINGUA: {{{lingua}}}  VOTO: {{{voto}}}</h4>
-          <h1>{{nonPresente}}</h1>
+          <img src="{{poster}}" alt="{{titolo}}">
+          <ul>
+            <li> TITOLO : {{titolo}} {{titoloFilm}}</li>
+            <li>tipo: {{tipo}}</li>
+            <li> TITOLO ORIGINALE: {{titoloOriginale}} {{titoloOriginaleFilm}}</li>
+            <li> LINGUA: {{{lingua}}}  VOTO: {{{voto}}}</li>
+            <li>{{nonPresente}}</li>
+          </ul>
         </div>
   </script>
   <script src="js\script.js" charset="utf-8"></script>

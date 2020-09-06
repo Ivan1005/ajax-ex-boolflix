@@ -44,13 +44,11 @@ function ricerca (data , url , type){
   );
 }
 
-
 // FUNZIONE STAMPA A SCHERM
 function print (data, type) {
   $(".cds-container").empty();
   var source = $('#entry-template').html();
   var template = Handlebars.compile(source);
-
     for(var i=0; i<data.length; i++){
       if (type == "film"){
         var title =data[i].title;
@@ -60,6 +58,7 @@ function print (data, type) {
         var origine = data[i].original_name;
       }
         var context= {
+          "poster":checkke(poster (data[i].poster_path)),
           "tipo": type,
           "titolo": title,
           "titoloOriginale":origine,
@@ -71,6 +70,7 @@ function print (data, type) {
     }
   $("#in").val("");
 }
+
 // FUNZIONE STARS
 function stars (num){
   // 1 divido num % 2
@@ -101,4 +101,18 @@ function flag(stringa) {
     }  else {
         return stringa;
     }
+}
+// FUNZIONE poster
+function poster (poster) {
+
+  var url3 = "https://image.tmdb.org/t/p/w342" + poster ;
+      return  url3 ;
+}
+// CONTROLLO URL
+function checkke (pos){
+  if (pos == "https://image.tmdb.org/t/p/w342null")
+  return "https://image.tmdb.org/t/p/w342/eQNNg0Ny6m0mRQDf0X4rf2U33AM.jpg";
+  else {
+    return pos;
+  }
 }

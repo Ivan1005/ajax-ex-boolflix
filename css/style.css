@@ -2,3 +2,10 @@
   height: 40px;
   width: 40px;
 }
+.cds-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.entry {
+
+}
