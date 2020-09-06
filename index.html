@@ -11,22 +11,37 @@
   <title>Document</title>
 </head>
 <body>
+  <header>
+    <div class="left">
+      <h2>BOOLFLIX</h2>
+    </div>
+    <div class="right">
+      <input id="in" type="text" name="" value="" placeholder="inserisci il titolo del film">
+      <button id="but" type="button" name="button">SEARCH</button>
+    </div>
+  </header>
+  <main>
+    <div class="cds-container">
+      <h1>Scegli BOOLFLIX ed entra nella famiglia più piccola d'Italia! </h1>
+      <img class="cover" src="https://cdn.pixabay.com/photo/2020/04/22/10/32/coronavirus-5077293__340.jpg" alt="">
+    </div>
+  </main>
 
-  <input id="in" type="text" name="" value="" placeholder="inserisci il titolo del film">
-  <button id="but" type="button" name="button">search</button>
-  <div class="cds-container">
-
-  </div>
   <script id="entry-template" type="text/x-handlebars-template">
         <div class="entry" >
-          <img src="{{poster}}" alt="{{titolo}}">
-          <ul>
-            <li> TITOLO : {{titolo}} {{titoloFilm}}</li>
-            <li>tipo: {{tipo}}</li>
-            <li> TITOLO ORIGINALE: {{titoloOriginale}} {{titoloOriginaleFilm}}</li>
-            <li> LINGUA: {{{lingua}}}  VOTO: {{{voto}}}</li>
-            <li>{{nonPresente}}</li>
-          </ul>
+          <div class="image">
+            <img src="{{poster}}" alt="{{titolo}}">
+          </div>
+          <div class="hover">
+            <ul>
+              <li> <strong>TITOLO : {{titolo}} {{titoloFilm}}</strong> </li>
+              <li> <strong>tipo: {{tipo}}</strong></li>
+              <li> <strong>TITOLO ORIGINALE: {{titoloOriginale}} {{titoloOriginaleFilm}}</strong></li>
+              <li> <strong>LINGUA: {{{lingua}}}  </strong></li>
+              <li> <strong>VOTO: {{{voto}}}  </strong></li>
+              <h1><strong>{{nonPresente}}</strong></h1>
+            </ul>
+          </div>
         </div>
   </script>
   <script src="js\script.js" charset="utf-8"></script>

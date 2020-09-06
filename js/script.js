@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $("#but").click(function(){
+    $(".cds-container").empty();
     var valore = $("#in").val();
     var url1 = "https://api.themoviedb.org/3/search/movie";
     var url2 = "https://api.themoviedb.org/3/search/tv";
